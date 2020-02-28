@@ -1,5 +1,24 @@
 /* || General setup */
+/* || General setup */
+/*
+  Color Theme
 
+  /* Color Theme Swatches in Hex */
+.color-theme_kostreski_edward_headshot-1-hex {
+  color: #4f5950;
+}
+.color-theme_kostreski_edward_headshot-2-hex {
+  color: #a67f68;
+}
+.color-theme_kostreski_edward_headshot-3-hex {
+  color: #f2d4c2;
+}
+.color-theme_kostreski_edward_headshot-4-hex {
+  color: #8c3737;
+}
+.color-theme_kostreski_edward_headshot-5-hex {
+  color: #0d0d0d;
+}
 html,
 body {
   margin: 0;
@@ -9,7 +28,7 @@ body {
 html {
   font-size: 10px;
   /*background-color: #a9a9a9;*/
-  background-color: rgb(158, 137, 255);
+  background-color: #4f5950;
 }
 
 body {
@@ -20,12 +39,11 @@ body {
 
 /* || typography */
 
-h1{
+h1 {
   font-family: "Simonetta", cursive;
-  font-weight: 900; 
-  color: #2a2a2a;
+  font-weight: 900;
+  color: #8c3737;
 }
-
 
 h2,
 h3 {
@@ -34,22 +52,26 @@ h3 {
   */
 
   font-family: "Simonetta", cursive;
-  font-weight: 400; 
-  color: #2a2a2a;
+  font-weight: 400;
+  color: #8c3737;
 }
 
 p,
 input,
-li {
+li,
+dd,
+dt {
   font-family: "Roboto Condensed", sans-serif;
-  color: #2a2a2a;
-}
 
+  color: #f2d4c2;
+}
 
 h1 {
   font-size: 4rem;
   text-align: center;
-  text-shadow: 2px 2px 10px black;
+  /*
+  text-shadow: 2px 2px 10px#F2D4C2;
+  */
 }
 
 h2 {
@@ -62,9 +84,14 @@ h3 {
 }
 
 p,
-li {
+li,dd,dt {
   font-size: 1.6rem;
   line-height: 1.5;
+}
+
+
+time {
+  
 }
 
 /* || header layout */
@@ -76,7 +103,7 @@ header {
 }
 
 body > * {
-  background-color: red;
+  background-color: #0d0d0d;
   padding: 1%;
 }
 
@@ -87,7 +114,7 @@ article,
 aside,
 footer,
 section {
-  background-color: rgba(0, 255, 0, 0.5);
+  background-color: #0d0d0d;
   padding: 1%;
 }
 
@@ -129,7 +156,7 @@ nav span {
   line-height: 1.7;
   text-transform: uppercase;
   text-decoration: none;
-  color: black;
+  color: #f2d4c2;
 }
 
 /* || main layout */
