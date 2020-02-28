@@ -4,6 +4,7 @@
   Color Theme
 
   /* Color Theme Swatches in Hex */
+/**/
 .color-theme_kostreski_edward_headshot-1-hex {
   color: #4f5950;
 }
@@ -19,6 +20,9 @@
 .color-theme_kostreski_edward_headshot-5-hex {
   color: #0d0d0d;
 }
+/**/
+
+
 html,
 body {
   margin: 0;
@@ -28,20 +32,25 @@ body {
 html {
   font-size: 10px;
   /*background-color: #a9a9a9;*/
+  color: #f2d4c2;
   background-color: #4f5950;
 }
 
+
 body {
   width: 70%;
+  /*
   min-width: 800px;
+  */
   margin: 0 auto;
+ 
 }
+
 
 /* || typography */
 
 h1 {
-  font-family: "Simonetta", cursive;
-  font-weight: 900;
+  font-family: 'Patua One', Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
   color: #8c3737;
 }
 
@@ -51,18 +60,18 @@ h3 {
   font-family: 'Cinzel Decorative', cursive;
   */
 
-  font-family: "Simonetta", cursive;
-  font-weight: 400;
+  font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
   color: #8c3737;
 }
+
 
 p,
 input,
 li,
 dd,
-dt {
-  font-family: "Roboto Condensed", sans-serif;
-
+dt ,
+img{
+  font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
   color: #f2d4c2;
 }
 
@@ -79,19 +88,9 @@ h2 {
   text-align: center;
 }
 
-h3 {
-  font-size: 2.2rem;
-}
-
-p,
-li,dd,dt {
+p,li,dd,dt {
   font-size: 1.6rem;
   line-height: 1.5;
-}
-
-
-time {
-  
 }
 
 /* || header layout */
@@ -107,85 +106,41 @@ body > * {
   padding: 1%;
 }
 
-main,
-header,
-nav,
-article,
-aside,
-footer,
-section {
-  background-color: #0d0d0d;
+.one{
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.one p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p, .one, .two, .headsection{
   padding: 1%;
 }
+
+
+
 
 h1 {
   flex: 5;
   text-transform: uppercase;
 }
 
-header img {
-  display: block;
-  height: 60px;
-  padding-top: 20.15px;
+img {
+  max-height: 300px;
+  height: inherit;
+  width: auto;
 }
 
-nav {
-  height: 50px;
-  flex: 100%;
-  display: flex;
+.headsection img{
+  max-height: 150px;
+
 }
 
-nav ul {
-  padding: 0;
-  list-style-type: none;
-  flex: 2;
-  display: flex;
-}
 
-nav li {
-  display: inline;
-  text-align: center;
-  flex: 1;
-}
+@media screen and (max-width: 1000px) {
 
-nav a,
-nav span {
-  display: inline-block;
-  font-size: 2rem;
-  height: 3rem;
-  line-height: 1.7;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #f2d4c2;
-}
-
-/* || main layout */
-
-main {
-  display: flex;
-}
-
-article,
-section {
-  flex: 4;
-}
-
-aside {
-  flex: 1;
-  margin-left: 10px;
-  padding: 1%;
-}
-
-aside a {
-  display: block;
-  float: left;
-  width: 50%;
-}
-
-aside img {
-  max-width: 100%;
-}
-
-footer {
-  margin-top: 10px;
 }
