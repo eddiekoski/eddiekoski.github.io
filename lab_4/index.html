@@ -50,8 +50,11 @@
         const content = document.querySelector(".content");
         content.innerHTML = "Hello world";
         */
-        const firstName = "Edward";
-        const lastName = "Kostreski";
+        const fullName = "Edward Kostreski";
+        const firstName = fullName.substr(0,fullName.indexOf(" ")); 
+        const lastName = fullName.substr(fullName.indexOf(" ")+1); 
+        console.log(firstName);
+        console.log(lastName);
         const header = document.querySelector(".header");
         header.innerHTML = firstName + " " + lastName + "'s Lab 4";
         const content = document.querySelector(".content");
@@ -64,6 +67,7 @@
         paragraphOne.innerHTML = "my name has " + (firstName.length + lastName.length) + " characters";
         paragraphTwo.innerHTML = "the third character in my name is " + (firstName + lastName).charAt(3-1);
 
+        paragraphTwo.innerHTML = paragraphTwo.innerHTML + "<br> HELLO";
         //var para1 = document.createElement("P"); // Create a <p> element
         //para1.setAttribute("class", "paragraph_one");
         //para1.innerHTML = "This is a paragraph."; // Insert text
