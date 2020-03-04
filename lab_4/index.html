@@ -22,7 +22,6 @@
             cronut glossier pork belly tacos poke next level fanny pack vegan
             jianbing lo-fi.
           </p>
-
         </div>
         <div class="footer"></div>
       </div>
@@ -40,7 +39,7 @@
           Into the second paragraph tag, return the 3rd character in your first name
           Capitalise that character:
              i.e. "the third character in my name is E"
-            Add a new line to your second paragraph
+          Add a new line to your second paragraph
           Return the final three characters of your last name to that new line
           Substring your first and last name into two separate variables
           Add the total length of your first and last names together
@@ -51,13 +50,24 @@
         const content = document.querySelector(".content");
         content.innerHTML = "Hello world";
         */
-
+        const firstName = "Edward";
+        const lastName = "Kostreski";
         const header = document.querySelector(".header");
-        header.innerHTML = "Edward Kostreski's Lab 4";
+        header.innerHTML = firstName + " " + lastName + "'s Lab 4";
+        const content = document.querySelector(".content");
+        content.innerHTML =
+          '<p class="paragraph1">Paragraph 1</p>\n<p class="paragraph2">paragraph 2</p>\n';
 
-        var para = document.createElement("P"); // Create a <p> element
-        para.innerHTML = "This is a paragraph."; // Insert text
-        document.getElementById("myDIV").appendChild(para); // Append <p> to <div> with id="myDIV"
+        const paragraphOne = document.querySelector(".paragraph1");
+        const paragraphTwo = document.querySelector(".paragraph2");
+
+        paragraphOne.innerHTML = "my name has " + (firstName.length + lastName.length) + " characters";
+        paragraphTwo.innerHTML = "the third character in my name is " + (firstName + lastName).charAt(3-1);
+
+        //var para1 = document.createElement("P"); // Create a <p> element
+        //para1.setAttribute("class", "paragraph_one");
+        //para1.innerHTML = "This is a paragraph."; // Insert text
+        //document.getElementById("myDIV").appendChild(para); // Append <p> to <div> with id="myDIV"
       }
     </script>
   </body>
