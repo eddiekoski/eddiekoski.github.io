@@ -318,10 +318,21 @@
         // }
 
         randomCountries.forEach(c => {
-          var node = document.createElement("LI");
-          var textnode = document.createTextNode(c);
-          node.appendChild(textnode);
-          myCountries.appendChild(node);
+          
+          var nodeNormalSpan = document.createElement("SPAN");
+          nodeNormalSpan.className += "normalWeight"
+          nodeNormalSpan.style.fontWeight = "normal";
+          var nodeBoldSpan = document.createElement("SPAN");
+          nodeBoldSpan.className += "boldWeight";
+          nodeBoldSpan.style.fontWeight = "bold";
+          var nodeLI = document.createElement("LI");
+          var textnodeCountry = document.createTextNode(c);
+          var textNodeCode = document.createTextNode("AA ");
+          nodeNormalSpan.appendChild(textnodeCountry);
+          nodeBoldSpan.appendChild(textNodeCode);
+          nodeLI.appendChild(nodeBoldSpan);
+          nodeLI.appendChild(nodeNormalSpan);
+          myCountries.appendChild(nodeLI);
         });
         // for (i = 0; i < randomCountries.length; i++) {
         //   var node = document.createElement("LI");
