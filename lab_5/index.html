@@ -17,6 +17,14 @@
     </div>
 
     <script>
+      //// How to create css rules with javascript
+      // https://davidwalsh.name/add-rules-stylesheets
+      
+      const sheet = document.styleSheets[0];
+      console.log(document.styleSheets[0]);
+      sheet.insertRule(".normalWeight { font-weight: normal;}");
+      sheet.insertRule(".boldWeight { font-weight: bold;}");
+
       /* N.B. - For your lab, use the variable "countries" now available on the window space */
       const countries = [
         { name: "Afghanistan", code: "AF" },
@@ -283,7 +291,6 @@
           let singleCountry = getSingleRandomCountry();
           if (randomCountries.indexOf(singleCountry) < 0) {
             randomCountries.push(singleCountry);
-            //console.log(singleCountry)
           }
         }
         // for (i = 0; i < randomCountries.length; i++) {
@@ -321,10 +328,10 @@
           
           var nodeNormalSpan = document.createElement("SPAN");
           nodeNormalSpan.className += "normalWeight"
-          nodeNormalSpan.style.fontWeight = "normal";
+          // nodeNormalSpan.style.fontWeight = "normal";
           var nodeBoldSpan = document.createElement("SPAN");
           nodeBoldSpan.className += "boldWeight";
-          nodeBoldSpan.style.fontWeight = "bold";
+          // nodeBoldSpan.style.fontWeight = "bold";
           var nodeLI = document.createElement("LI");
           var textnodeCountry = document.createTextNode(c);
           var textNodeCode = document.createTextNode("AA ");
