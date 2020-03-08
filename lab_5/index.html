@@ -278,12 +278,12 @@
 
       function generateOrderedList() {
         let randomCountries = new Array();
-        
-        while(randomCountries.length < 25){
+
+        while (randomCountries.length < 25) {
           let singleCountry = getSingleRandomCountry();
-          console.log(Math.random())
-          if(randomCountries.indexOf(singleCountry)>=0){
+          if (randomCountries.indexOf(singleCountry) < 0) {
             randomCountries.push(singleCountry);
+            //console.log(singleCountry)
           }
         }
         // for (i = 0; i < randomCountries.length; i++) {
@@ -302,7 +302,6 @@
       myButton.addEventListener("click", function() {
         myHeader.innerHTML = "Edward Kostreski's List of Countries";
 
-
         myContent.innerHTML = '<ol class="countries"></ol>';
 
         myCountries = document.querySelector(".countries");
@@ -318,13 +317,18 @@
         //   myCountries.appendChild(node);
         // }
 
-        for (i = 0;i<randomCountries.length;i++) {
+        randomCountries.forEach(c => {
           var node = document.createElement("LI");
-          var textnode = document.createTextNode(randomCountries[i]);
+          var textnode = document.createTextNode(c);
           node.appendChild(textnode);
           myCountries.appendChild(node);
-        }
-
+        });
+        // for (i = 0; i < randomCountries.length; i++) {
+        //   var node = document.createElement("LI");
+        //   var textnode = document.createTextNode(randomCountries[i]);
+        //   node.appendChild(textnode);
+        //   myCountries.appendChild(node);
+        // }
       });
     </script>
   </body>
