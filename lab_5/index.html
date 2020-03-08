@@ -263,14 +263,68 @@
         { name: "Zambia", code: "ZM" },
         { name: "Zimbabwe", code: "ZW" }
       ];
+
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+      }
+
+      function getSingleRandomCountry() {
+        return countries[getRandomInt(0, countries.length)].name;
+      }
+
+      function generateOrderedList() {
+        let randomCountries = new Array();
+        
+        while(randomCountries.length < 25){
+          let singleCountry = getSingleRandomCountry();
+          console.log(Math.random())
+          if(randomCountries.indexOf(singleCountry)>=0){
+            randomCountries.push(singleCountry);
+          }
+        }
+        // for (i = 0; i < randomCountries.length; i++) {
+        //   randomCountries[i] = getSingleRandomCountry();
+        // }
+        return randomCountries;
+      }
+
       console.log("List of countries in the world", countries);
       //console.log(document.getElementsByClassName('activate'));
       const myButton = document.querySelector(".activate");
       const myContent = document.querySelector(".content");
+      const myHeader = document.querySelector(".header");
       //myButton.innerHTML = "LOL BUTTON";
       //myContent.innerHTML = "LOL";
       myButton.addEventListener("click", function() {
-        myContent.innerHTML = "LOL";
+        myHeader.innerHTML = "Edward Kostreski's List of Countries";
+
+
+        myContent.innerHTML = '<ol class="countries"></ol>';
+
+        myCountries = document.querySelector(".countries");
+
+        let randomCountries = generateOrderedList();
+
+        //https://www.w3schools.com/jsref/met_node_appendchild.asp
+        // let c = String();
+        // for (c in randomCountries) {
+        //   var node = document.createElement("LI");
+        //   var textnode = document.createTextNode(c);
+        //   node.appendChild(textnode);
+        //   myCountries.appendChild(node);
+        // }
+
+        for (i = 0;i<randomCountries.length;i++) {
+          var node = document.createElement("LI");
+          var textnode = document.createTextNode(randomCountries[i]);
+          node.appendChild(textnode);
+          myCountries.appendChild(node);
+        }
+
       });
     </script>
   </body>
