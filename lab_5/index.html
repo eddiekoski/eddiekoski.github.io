@@ -313,6 +313,18 @@
         return sortedCountries;
       }
 
+
+      function myUnselectOf(pickedCountries) {
+        let remainingCountries = Array();
+        for(i = 0;i<countries.length;i++){
+          let ci = countries[i];
+          if(pickedCountries.indexOf(ci)<0){
+            remainingCountries.push(ci);
+          }
+        }
+        return remainingCountries;
+      }
+
       // console.log("List of countries in the world", countries);
       const myButton = document.querySelector(".activate");
       const myContent = document.querySelector(".content");
@@ -328,6 +340,16 @@
         let randomCountries = generateOrderedList();
 
         randomCountries = mySortCountries(randomCountries);
+
+        let unselectedCountries = myUnselectOf(randomCountries);
+
+        console.log("unselectedCountries.length = " + unselectedCountries.length);
+        console.log("==================== UNSELECTED COUNTRIES ====================");
+        unselectedCountries.forEach(c => {
+          console.log(c.code + " " + c.name);
+        });
+        console.log("==============================================================");
+
 
         //javascript insert elements
         //https://www.w3schools.com/jsref/met_node_appendchild.asp
@@ -349,6 +371,7 @@
           myCountries.appendChild(nodeLI);
         });
       });
+
     </script>
   </body>
 </html>
