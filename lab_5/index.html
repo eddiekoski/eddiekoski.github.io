@@ -293,27 +293,31 @@
             randomCountries.push(singleCountry);
           }
         }
-        // for (i = 0; i < randomCountries.length; i++) {
-        //   randomCountries[i] = getSingleRandomCountry();
-        // }
+
         return randomCountries;
       }
 
       function mySortCountries(randomCountries) {
         let sortedCountries = Array();
+        let i = 0;
 
         randomCountries.forEach(c => {
-          for (i = 0; i < sortedCountries.length; i++) {}
+          for (i = 0; i < sortedCountries.length; i++) {
+            if (c.name < sortedCountries[i].name) {
+              break;
+            }
+          }
+          sortedCountries.splice(i, 0, c);
         });
+
+        return sortedCountries;
       }
 
-      console.log("List of countries in the world", countries);
-      //console.log(document.getElementsByClassName('activate'));
+      // console.log("List of countries in the world", countries);
       const myButton = document.querySelector(".activate");
       const myContent = document.querySelector(".content");
       const myHeader = document.querySelector(".header");
-      //myButton.innerHTML = "LOL BUTTON";
-      //myContent.innerHTML = "LOL";
+
       myButton.addEventListener("click", function() {
         myHeader.innerHTML = "Edward Kostreski's List of Countries";
 
@@ -322,6 +326,8 @@
         myCountries = document.querySelector(".countries");
 
         let randomCountries = generateOrderedList();
+
+        randomCountries = mySortCountries(randomCountries);
 
         //javascript insert elements
         //https://www.w3schools.com/jsref/met_node_appendchild.asp
