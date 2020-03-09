@@ -19,7 +19,7 @@
     <script>
       //// How to create css rules with javascript
       // https://davidwalsh.name/add-rules-stylesheets
-      
+
       const sheet = document.styleSheets[0];
       console.log(document.styleSheets[0]);
       sheet.insertRule(".normalWeight { font-weight: normal;}");
@@ -281,7 +281,7 @@
       }
 
       function getSingleRandomCountry() {
-        return countries[getRandomInt(0, countries.length)].name;
+        return countries[getRandomInt(0, countries.length)];
       }
 
       function generateOrderedList() {
@@ -297,6 +297,14 @@
         //   randomCountries[i] = getSingleRandomCountry();
         // }
         return randomCountries;
+      }
+
+      function mySortCountries(randomCountries) {
+        let sortedCountries = Array();
+
+        randomCountries.forEach(c => {
+          for (i = 0; i < sortedCountries.length; i++) {}
+        });
       }
 
       console.log("List of countries in the world", countries);
@@ -315,38 +323,25 @@
 
         let randomCountries = generateOrderedList();
 
+        //javascript insert elements
         //https://www.w3schools.com/jsref/met_node_appendchild.asp
-        // let c = String();
-        // for (c in randomCountries) {
-        //   var node = document.createElement("LI");
-        //   var textnode = document.createTextNode(c);
-        //   node.appendChild(textnode);
-        //   myCountries.appendChild(node);
-        // }
 
         randomCountries.forEach(c => {
-          
-          var nodeNormalSpan = document.createElement("SPAN");
-          nodeNormalSpan.className += "normalWeight"
+          let nodeNormalSpan = document.createElement("SPAN");
+          nodeNormalSpan.className += "normalWeight";
           // nodeNormalSpan.style.fontWeight = "normal";
-          var nodeBoldSpan = document.createElement("SPAN");
+          let nodeBoldSpan = document.createElement("SPAN");
           nodeBoldSpan.className += "boldWeight";
           // nodeBoldSpan.style.fontWeight = "bold";
-          var nodeLI = document.createElement("LI");
-          var textnodeCountry = document.createTextNode(c);
-          var textNodeCode = document.createTextNode("AA ");
+          let nodeLI = document.createElement("LI");
+          let textnodeCountry = document.createTextNode(c.name);
+          let textNodeCode = document.createTextNode(c.code + " ");
           nodeNormalSpan.appendChild(textnodeCountry);
           nodeBoldSpan.appendChild(textNodeCode);
           nodeLI.appendChild(nodeBoldSpan);
           nodeLI.appendChild(nodeNormalSpan);
           myCountries.appendChild(nodeLI);
         });
-        // for (i = 0; i < randomCountries.length; i++) {
-        //   var node = document.createElement("LI");
-        //   var textnode = document.createTextNode(randomCountries[i]);
-        //   node.appendChild(textnode);
-        //   myCountries.appendChild(node);
-        // }
       });
     </script>
   </body>
