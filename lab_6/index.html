@@ -8,20 +8,18 @@
     <div class="wrapper">
       <div class="container">
         <div>
-          <h1>HTML 1 Forms Lab</h1>
+          <h1>HTML Forms Lab</h1>
           <p>Lab 6 for INST377</p>
           <p>Edward Kostreski</p>
-          <br>
+          <br />
+          <!--Form From https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form-->
+          <!--MAX LENGTH FROM https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text-->
 
           <form action="/my-handling-form-page" method="post">
             <ul>
               <li>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="user_name" />
-              </li>
-              <li>
-                <label for="mail">E-mail:</label>
-                <input type="email" id="mail" name="user_mail" />
+                <input type="text" id="name" name="user_name" maxlength="140"/>
               </li>
               <li>
                 <label for="msg">Message:</label>
