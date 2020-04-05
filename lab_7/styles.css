@@ -10,13 +10,13 @@ body {
 h1,
 h2,
 h3 {
-  line-height: 1.2
+  line-height: 1.2;
 }
 
 /* End document default styles */
 .code {
   background-color: rgb(255, 231, 202);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   color: dimgrey;
 }
 
@@ -41,7 +41,6 @@ h3 {
   background: #fefefe;
   border: 1px dashed #ccc;
   margin: 25px;
-
 }
 
 .wrapper div {
@@ -102,4 +101,7 @@ h3 {
   top: 1px;
 }
 
-#mapid { height: 180px; }
+#mapid {
+  width: 600px;
+  height: 400px;
+}
