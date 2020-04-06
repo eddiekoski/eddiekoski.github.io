@@ -81,13 +81,16 @@
         .setContent("I am a standalone popup.")
         .openOn(mymap);
 
-      var popup = L.popup();
+      var popup = L.popup({closeButton:false,closeOnClick:false,keepInView:true,className:"popclass"});
 
 
       function onMapClick(e) {
+        console.log(e)
+        console.log(typeof(e))
         popup
           .setLatLng(e.latlng)
           .setContent("You clicked the map at " + e.latlng.toString())
+          
           .openOn(mymap);
       }
 
