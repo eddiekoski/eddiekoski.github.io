@@ -30,7 +30,10 @@
     <script>
       /* Your lab code can go here, or in an external file you include */
 
-      var mymap = L.map("mapid").setView([38.98808332188992, -76.94138715817826], 13);
+      var mymap = L.map("mapid").setView(
+        [38.98808332188992, -76.94138715817826],
+        13
+      );
       //var mymap = L.map("mapid").setView([51.505, -0.09], 13);
 
       // https://www.gps-coordinates.net/
@@ -47,55 +50,79 @@
           id: "mapbox/streets-v11",
           tileSize: 512,
           zoomOffset: -1,
-          accessToken: "pk.eyJ1IjoiYW1xa25laGR1Y3Z4a3VyZmFzcWQiLCJhIjoiY2s4a3dvam9pMDIxbDNndW52MmNpM29oZyJ9._Ffnss9MpeFuafwk6gm0sQ",
+          accessToken:
+            "pk.eyJ1IjoiYW1xa25laGR1Y3Z4a3VyZmFzcWQiLCJhIjoiY2s4a3dvam9pMDIxbDNndW52MmNpM29oZyJ9._Ffnss9MpeFuafwk6gm0sQ",
         }
       ).addTo(mymap);
 
-      var marker = L.marker([38.98808332188992, -76.94138715817826]).addTo(mymap);
+      var marker = L.marker([38.98808332188992, -76.94138715817826]).addTo(
+        mymap
+      );
+
+      /*
+                  var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+                  var circle = L.circle([51.508, -0.11], {
+                    color: "red",
+                    fillColor: "#f03",
+                    fillOpacity: 0.5,
+                    radius: 500,
+                  }).addTo(mymap);
 
 
-/*
-      var marker = L.marker([51.5, -0.09]).addTo(mymap);
-
-      var circle = L.circle([51.508, -0.11], {
-        color: "red",
-        fillColor: "#f03",
-        fillOpacity: 0.5,
-        radius: 500,
-      }).addTo(mymap);
+                  var polygon = L.polygon([
+                    [51.509, -0.08],
+                    [51.503, -0.06],
+                    [51.51, -0.047],
+                  ]).addTo(mymap);
 
 
-      var polygon = L.polygon([
-        [51.509, -0.08],
-        [51.503, -0.06],
-        [51.51, -0.047],
-      ]).addTo(mymap);
-
-
-      marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-      circle.bindPopup("I am a circle.");
-      polygon.bindPopup("I am a polygon.");
-*/
+                  marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+                  circle.bindPopup("I am a circle.");
+                  polygon.bindPopup("I am a polygon.");
+            */
       var popup = L.popup()
         .setLatLng([38.98808332188992, -76.94138715817826])
         .setContent("Hornbake Library")
         .openOn(mymap);
 
-      
-      var popup = L.popup({closeButton:false,closeOnClick:false,keepInView:true,className:"popclass"});
-
+      var popup = L.popup({
+        closeButton: false,
+        closeOnClick: false,
+        keepInView: true,
+        className: "popclass",
+      });
 
       function onMapClick(e) {
-        console.log(e)
-        console.log(typeof(e))
+        console.log(e);
+        console.log(typeof e);
         popup
           .setLatLng(e.latlng)
           .setContent("You clicked the map at " + e.latlng.toString())
-          
+
           .openOn(mymap);
       }
 
       mymap.on("click", onMapClick);
+
+      //JavaScript Tip: Using fetch to Load a JSON File
+      //https://www.youtube.com/watch?v=1tVCwv_BX2M
+
+      fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
+        .then(function (resp) {
+          return resp.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          const jsonData = data;
+          //after a lot of console commands got these values
+          for (x = 0; x < 3; x++) {
+            xx = jsonData[x].geocoded_column_1.coordinates[1];
+            yy = jsonData[x].geocoded_column_1.coordinates[0];
+
+            var marker = L.marker([xx, yy]).addTo(mymap);
+          }
+        });
     </script>
   </body>
 </html>
