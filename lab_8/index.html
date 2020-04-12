@@ -10,28 +10,67 @@
       <div class="wrapper">
         <div class="header">Frontend Libraries: Charts Lab</div>
         <div class="content">
-          When your lab is done, this should be replaced with a useful chart full of food data.
+          When your lab is done, this should be replaced with a useful chart
+          full of food data.
         </div>
         <div class="footer">Let's eat out in the future!</div>
       </div>
     </div>
     <script>
-      
+      //Map API Docs
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+      //Set API Docs
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+      const categoryMap = new Map();
+
+      // My Data Structure I developed (categoryMap) will reorganzie the data by category
+      // It is a map Map where the keys are categories and the values are a set of objects where each object was an element of the data array
+
+      const dataPointer = [];
       //fetch(' https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json') // replace this with the food safety data set
-      fetch(' https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
-      .then((response) => {
-        console.log("response information", response);
-        return response;
-      })
-      .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
-        .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
-          
-          console.log("variable:data", data);
-          console.log("variable:data.length",data.length);
-          return data; // <- this will pass the data to the next "then" statement when I'm ready.
-        }).then((data) => {
-          console.log("Extra then statement");
+      fetch(" https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
+        .then((response) => {
+          console.log("response information", response);
+          return response;
         })
+        .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
+        .then((data) => {
+          // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
+
+          console.log("variable:data", data);
+          console.log("variable:data.length", data.length);
+          return data; // <- this will pass the data to the next "then" statement when I'm ready.
+        })
+        .then((data) => {
+          //console.log("Extra then statement");
+          data.forEach((element) => {
+            dataPointer.push(element);
+          });
+
+          data.forEach((element) => {
+            category = element["category"];
+            if (categoryMap.has(category)) {
+              //add this element to the set for this category
+              set = categoryMap.get(category);
+              set.add(element);
+            } else {
+              //This set and therefore the category does not exist therefore I create the set and ad the element
+              // Then add a new key value pair to the map
+              set = new Set();
+              set.add(element);
+              categoryMap.set(category, set);
+            }
+          });
+
+          console.log(`There are ${categoryMap.size} categories `);
+          return categoryMap;
+        })
+        .then((cm) => {
+          for(key of cm.keys()){
+            console.log(`Category ${key} has ${cm.get(key).size} entries`);
+          }
+            
+        });
     </script>
   </body>
 </html>
