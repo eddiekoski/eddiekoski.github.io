@@ -100,3 +100,10 @@ h3 {
   position: relative;
   top: 1px;
 }
+
+
+#chartContainer{
+  /* height: 370px; */
+  height:600px;
+  width: 100%;
+}
