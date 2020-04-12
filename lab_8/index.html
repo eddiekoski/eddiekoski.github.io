@@ -28,7 +28,9 @@
           
           console.log("variable:data", data);
           console.log("variable:data.length",data.length);
-          // return data; // <- this will pass the data to the next "then" statement when I'm ready.
+          return data; // <- this will pass the data to the next "then" statement when I'm ready.
+        }).then((data) => {
+          console.log("Extra then statement");
         })
     </script>
   </body>
