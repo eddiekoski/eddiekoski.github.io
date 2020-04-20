@@ -19,6 +19,44 @@ app.use(express.json());
 // And the ability to serve some files publicly, like our HTML.
 app.use(express.static('public'));
 
+function generateDataPoints(cm) {
+  console.log("Generate Data Points Was Called!!!!");
+  temp = [
+    { y: 51.08, label: "Chrome" },
+    { y: 27.34, label: "Internet Explorer" },
+    { y: 10.62, label: "Firefox" },
+    { y: 5.02, label: "Microsoft Edge" },
+    { y: 4.07, label: "Safari" },
+    { y: 1.22, label: "Opera" },
+    { y: 0.44, label: "Others" },
+  ];
+
+  dataPoints = [];
+
+  // total = 0;
+  for (key of cm.keys()) {
+    // console.log(
+    //   `Category ${key} with ${cm.get(key).size} entries added to the data`
+    // );
+
+    s = cm.get(key).size;
+    // if (s < 10) {
+    //   total = total + s;
+    // } else {
+      o = new Object();
+      o.y = s;
+      o.label = key;
+      dataPoints.push(o);
+    // }
+  }
+  // o = new Object();
+  // o.y = total;
+  // o.label = "Other";
+  // dataPoints.push(o);
+
+  //return temp;
+  return dataPoints;
+}
 
 
 function processDataForFrontEnd(req, res) {
@@ -33,7 +71,40 @@ function processDataForFrontEnd(req, res) {
       .then((r) => r.json())
       .then((data) => {
         console.log(data);
-        res.send({ data: data }); // here's where we return data to the front end
+        const dataPointer = [];
+        const categoryMap = new Map();
+        
+        /////////////////
+        
+          //console.log("Extra then statement");
+          data.forEach((element) => {
+            dataPointer.push(element);
+          });
+
+          data.forEach((element) => {
+            category = element["category"];
+            if (categoryMap.has(category)) {
+              //add this element to the set for this category
+              set = categoryMap.get(category);
+              set.add(element);
+            } else {
+              //This set and therefore the category does not exist therefore I create the set and ad the element
+              // Then add a new key value pair to the map
+              set = new Set();
+              set.add(element);
+              categoryMap.set(category, set);
+            }
+          //console.log(`There are ${categoryMap.size} categories `);
+        })
+
+        for (key of categoryMap.keys()) {
+          console.log(`Category ${key} has ${categoryMap.get(key).size} entries`);
+        }
+        preparedDataPoints = generateDataPoints(categoryMap);
+        console.log(preparedDataPoints)
+        ///////////////
+
+        res.send({ data: preparedDataPoints }); // here's where we return data to the front end
       })
       .catch((err) => {
         console.log(err);
