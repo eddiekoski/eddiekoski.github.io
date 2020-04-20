@@ -12,26 +12,26 @@ function generateDataPoints(cm) {
 
   dataPoints = [];
 
-  total = 0;
+  // total = 0;
   for (key of cm.keys()) {
     console.log(
       `Category ${key} with ${cm.get(key).size} entries added to the data`
     );
 
     s = cm.get(key).size;
-    if (s < 10) {
-      total = total + s;
-    } else {
+    // if (s < 10) {
+    //   total = total + s;
+    // } else {
       o = new Object();
       o.y = s;
       o.label = key;
       dataPoints.push(o);
-    }
+    // }
   }
-  o = new Object();
-  o.y = total;
-  o.label = "Other";
-  dataPoints.push(o);
+  // o = new Object();
+  // o.y = total;
+  // o.label = "Other";
+  // dataPoints.push(o);
 
   //return temp;
   return dataPoints;
