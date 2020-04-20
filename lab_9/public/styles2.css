@@ -25,18 +25,19 @@ h3 {
   right: 0;
   left: 0;
   display: flex;
+  justify-content: center;
   align-items: flex-start;
   font-family: Helvetica, Geneva, Tahoma, sans-serif;
 }
 
 .wrapper {
   min-height: 100%;
-  width: 100%;
   display: flex;
+  width: 80%;
   justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
   background: #fefefe;
   border: 1px dashed #ccc;
   margin: 25px;
@@ -68,14 +69,15 @@ h3 {
 .content {
   background: #fff;
   border: 2px dotted #444;
-  align-self: flex-start;
-  width: 85%;
+  flex-grow: 2;
+  flex: 0 0 200px;
   padding: 10px;
   overflow-wrap: break-word;
   margin: 25px 50px;
+  max-width: 450px;
 }
 
-.activate {
+.button {
   background-color: #ffc477;
   -moz-border-radius: 11px;
   -webkit-border-radius: 11px;
@@ -91,19 +93,12 @@ h3 {
   text-shadow: 0px 1px 1px #cc9f52;
 }
 
-.activate:hover {
+.button:hover {
   background-color: coral;
   border: 2px solid rgb(216, 91, 46);
 }
 
-.activate:active {
+.button:active {
   position: relative;
   top: 1px;
-}
-
-
-#chartContainer{
-  /* height: 370px; */
-  height:600px;
-  width: 100%;
 }

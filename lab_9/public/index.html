@@ -13,7 +13,7 @@
         <div class="content">
           <!--When your lab is done, this should be replaced with a useful chart
           full of food data.-->
-          <div id="chartContainer" ></div>
+          <div id="chartContainer"></div>
         </div>
         <div class="footer">Let's eat out in the future!</div>
       </div>
@@ -40,7 +40,8 @@
 
           console.log("variable:data", data);
           console.log("variable:data.length", data.length);
-          return data; // <- this will pass the data to the next "then" statement when I'm ready.
+          console.log("typeof(data)", typeof data);
+          return data.data; // <- this will pass the data to the next "then" statement when I'm ready.
         })
         .then((data) => {
           //console.log("Extra then statement");
@@ -74,26 +75,22 @@
         })
         .then(() => {
           var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
             animationEnabled: true,
-
             title: {
-              text: "Number of Locations by Category",
-            },
-            axisX: {
-              interval: 1,
-            },
-            axisY2: {
-              interlacedColor: "rgba(1,77,101,.2)",
-              gridColor: "rgba(1,77,101,.1)",
-              title: "Number of Companies",
+              text: "Desktop Browser Market Share in 2016",
             },
             data: [
               {
-                type: "bar",
-                name: "companies",
-                axisYType: "secondary",
-                //color: "#014D65",
-                dataPoints: preparedDataPoints ,
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: preparedDataPoints,
               },
             ],
           });

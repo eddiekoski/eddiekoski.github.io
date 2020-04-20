@@ -1,24 +1,13 @@
 function generateDataPoints(cm) {
   console.log("Generate Data Points Was Called!!!!");
   temp = [
-    { y: 3, label: "Sweden" },
-    { y: 7, label: "Taiwan" },
-    { y: 5, label: "Russia" },
-    { y: 9, label: "Spain" },
-    { y: 7, label: "Brazil" },
-    { y: 7, label: "India" },
-    { y: 9, label: "Italy" },
-    { y: 8, label: "Australia" },
-    { y: 11, label: "Canada" },
-    { y: 15, label: "South Korea" },
-    { y: 12, label: "Netherlands" },
-    { y: 15, label: "Switzerland" },
-    { y: 25, label: "Britain" },
-    { y: 28, label: "Germany" },
-    { y: 29, label: "France" },
-    { y: 52, label: "Japan" },
-    { y: 103, label: "China" },
-    { y: 134, label: "US" },
+    { y: 51.08, label: "Chrome" },
+    { y: 27.34, label: "Internet Explorer" },
+    { y: 10.62, label: "Firefox" },
+    { y: 5.02, label: "Microsoft Edge" },
+    { y: 4.07, label: "Safari" },
+    { y: 1.22, label: "Opera" },
+    { y: 0.44, label: "Others" },
   ];
 
   dataPoints = [];
