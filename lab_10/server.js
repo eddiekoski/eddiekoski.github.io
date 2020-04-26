@@ -69,6 +69,9 @@ app
         console.log(err);
       });
     }
+  }).put((req,res) => {
+    console.log("PUT REQUEST!")
+    res.status("418").send("something went wrong, additionally i am a teapot 2");
   });
 
 app.listen(port, () => {
