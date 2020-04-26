@@ -14,6 +14,10 @@
           <form class="targetForm" id="labForm">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" />
+            <!--Got best practice zip code from here-->
+            <!--https://stackoverflow.com/questions/23676778/what-html5-form-attribute-should-be-used-for-a-zipcode-->
+            <label for="zipcode">Zip Code</label>
+            <input type="text" pattern="[0-9]{5}" title="Five digit zip code" id="zipcode" name="zipcode" />
             <label for="interests">Interests</label>
             <textarea id="interests" name="interests" rows="5" cols="33">
                 Default text says what?
