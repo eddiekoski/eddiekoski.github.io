@@ -32,17 +32,28 @@
             <button id="formBtn">Submit</button>
           </form>
         </div>
+
+
+        <div>
+          <form method="get" class="targetForm" id="databaseform">
+            <br />
+            <button id="databaseBtn">GET-DATABASE</button>
+          </form>
+        </div>
       </div>
     </div>
     <script>
+      //for debugging
       var response_pointer = "";
+      var response_pointer2
 
       function sendForm(e) {
         e.preventDefault(); // this prevents your page reloading on button click
         const target = document.querySelector("#labForm");
         const btn = document.querySelector("#formBtn");
-
         const formToSend = new FormData(target);
+
+       
 
         fetch("/api", {
           method: "POST",
@@ -88,6 +99,69 @@
 
       const formBtn = document.querySelector("#formBtn");
       formBtn.addEventListener("click", sendForm);
+
+
+      function sendFormDatabase(e) {
+        e.preventDefault(); // this prevents your page reloading on button click
+
+        const targetDatabase = document.querySelector("#databaseform")
+        const btnDatabase = document.querySelector("#databaseBtn")
+        const formToSendDatabase = new FormData(targetDatabase);
+
+       
+
+        fetch("/api", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }//,
+          //body: JSON.stringify(Object.fromEntries(formToSendDatabase)),
+        })
+          .then((data) => data.text()) // note: we didn't send JSON, so there's no JSON to get.
+          .then((txtresponse) => {
+            console.log("____________________________________________________");
+            console.log(txtresponse);
+            console.log("\n");
+            console.log("____________________________________________________");
+            //response_pointer = txtresponse;
+            const obj_response = JSON.parse(txtresponse);
+            response_pointer2 = obj_response; //temporaty expose hidden variables to console
+            
+            console.log(obj_response);
+            console.log("\n");
+            btnDatabase.setAttribute("disabled", true);
+            const br = document.createElement("br");
+            const ol = document.createElement("ul");
+
+            /*
+             <ul>
+            <li>Coffee</li>
+            < li>Tea</li>
+            <li>Milk</li>
+            </ul> 
+            */
+            targetDatabase.append("New Database State!\n")
+            obj_response.forEach(element => {
+              console.log(element)
+              let li = document.createElement("li");
+              let text = document.createTextNode(JSON.stringify(element));
+              li.appendChild(text)
+              ol.appendChild(li);
+            });
+
+            targetDatabase.append(br);
+            targetDatabase.append(ol);
+            //target.append(`${txtresponse}`);
+          });
+      }
+      
+     
+
+      const databaseBtn = document.querySelector("#databaseBtn");
+      databaseBtn.addEventListener("click", sendFormDatabase);
+
+
+
     </script>
   </body>
 </html>

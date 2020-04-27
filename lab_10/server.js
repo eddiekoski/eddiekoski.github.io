@@ -47,7 +47,15 @@ app
   .route("/api")
   .get((req, res) => {
     console.log("Get Request");
-    res.send("Get Request");
+    (async () => {
+      const db = await open(dbSettings);
+      const select_command = "SELECT * FROM SUBMISSIONS";
+      console.log(select_command);
+      const result3 = await db.all(select_command);
+      console.log("Current Database:", result3);
+      res.json(result3);
+    })();
+    //res.send("Get Request Finished");
   })
   .post((req, res) => {
     if (!req.body.name) {
@@ -80,21 +88,12 @@ app
         console.log("Create Database:", result);
 
         const insert_command = `INSERT INTO SUBMISSIONS (name, zipcode, interest)
-      VALUES('${req_name}', '${req_zipcode}', '${req_interest}') `;
+        VALUES('${req_name}', '${req_zipcode}', '${req_interest}') `;
         console.log(insert_command);
         const result2 = await db.all(insert_command);
         console.log("Insert Submission:", result2);
-
-        const select_command = "SELECT * FROM SUBMISSIONS";
-        console.log(select_command);
-
-        const result3 = await db.all(select_command);
-        //const result = await db.all("SELECT * FROM user");
-
-        console.log("Current Database:", result3);
-
-        res.json(result3);
-        
+        const rr = [{SUCCESS: {"name" : req_name,"zip code":req_zipcode,"interest" : req_interest}}]
+        res.json(rr);
       })();
     }
   })
