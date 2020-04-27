@@ -17,7 +17,13 @@
             <!--Got best practice zip code from here-->
             <!--https://stackoverflow.com/questions/23676778/what-html5-form-attribute-should-be-used-for-a-zipcode-->
             <label for="zipcode">Zip Code</label>
-            <input type="text" pattern="[0-9]{5}" title="Five digit zip code" id="zipcode" name="zipcode" />
+            <input
+              type="text"
+              pattern="[0-9]{5}"
+              title="Five digit zip code"
+              id="zipcode"
+              name="zipcode"
+            />
             <label for="interests">Interests</label>
             <textarea id="interests" name="interests" rows="5" cols="33">
                 Default text says what?
@@ -29,6 +35,8 @@
       </div>
     </div>
     <script>
+      var response_pointer = "";
+
       function sendForm(e) {
         e.preventDefault(); // this prevents your page reloading on button click
         const target = document.querySelector("#labForm");
@@ -45,11 +53,36 @@
         })
           .then((data) => data.text()) // note: we didn't send JSON, so there's no JSON to get.
           .then((txtresponse) => {
+            //response_pointer = txtresponse;
+            const obj_response = JSON.parse(txtresponse);
+            response_pointer = obj_response; //temporaty expose hidden variables to console
             console.log(txtresponse);
+            console.log("\n");
+            console.log(obj_response);
+            console.log("\n");
             btn.setAttribute("disabled", true);
             const br = document.createElement("br");
+            const ul = document.createElement("ul");
+
+            /*
+             <ul>
+            <li>Coffee</li>
+            < li>Tea</li>
+            <li>Milk</li>
+            </ul> 
+            */
+           target.append("New Database State!\n")
+            obj_response.forEach(element => {
+              console.log(element)
+              let li = document.createElement("li");
+              let text = document.createTextNode(JSON.stringify(element));
+              li.appendChild(text)
+              ul.appendChild(li);
+            });
+
             target.append(br);
-            target.append(`${txtresponse}`);
+            target.append(ul);
+            //target.append(`${txtresponse}`);
           });
       }
 
